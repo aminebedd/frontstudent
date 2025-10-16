@@ -13,12 +13,12 @@ function App() {
   const [message, setMessage] = useState("");
   const API_BASE = "https://student-project-dq7w.onrender.com";
 
-
+  // handle input
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-
+  // submit new student
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -41,8 +41,6 @@ function App() {
       }
     }
   };
-
-
 
   return (
     <div style={styles.container}>
@@ -84,25 +82,30 @@ function App() {
           onChange={handleChange}
           style={styles.input}
         />
-        <input
-          type="text"
+
+        {/* ✅ قائمة الاختيارات (Dropdown) */}
+        <select
           name="speciality"
-          placeholder="Speciality"
           value={form.speciality}
           onChange={handleChange}
+          required
           style={styles.input}
-        />
+        >
+          <option value="">-- اختر التخصص --</option>
+          <option value="أستاذ تعليم متوسط رياضيات">أستاذ تعليم متوسط رياضيات</option>
+          <option value="أستاذ تعليم متوسط فيزياء">أستاذ تعليم متوسط فيزياء</option>
+          <option value="أستاذ تعليم ثانوي علوم طبيعية">أستاذ تعليم ثانوي علوم طبيعية</option>
+          <option value="أستاذ تعليم ثانوي إعلام آلي">أستاذ تعليم ثانوي إعلام آلي</option>
+        </select>
 
         <button type="submit" style={styles.button}>
-          Add Student
+          إضافة الطالب
         </button>
       </form>
 
       {message && <p style={styles.message}>{message}</p>}
 
       <hr style={{ width: "100%", margin: "30px 0" }} />
-
-      
     </div>
   );
 }
@@ -113,6 +116,7 @@ const styles = {
     maxWidth: "500px",
     margin: "60px auto",
     textAlign: "center",
+    direction: "rtl", // ✅ يجعل النصوص بالعربية
   },
   form: {
     display: "flex",
@@ -132,7 +136,6 @@ const styles = {
     borderRadius: "6px",
     cursor: "pointer",
   },
-  
   message: {
     color: "#333",
     marginTop: "15px",
