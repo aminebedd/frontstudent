@@ -8,6 +8,7 @@ function App() {
     email: "",
     phonenumber: "",
     speciality: "",
+    level: "",
   });
 
   const [message, setMessage] = useState("");
@@ -32,6 +33,7 @@ function App() {
         email: "",
         phonenumber: "",
         speciality: "",
+        level: "",
       });
     } catch (err) {
       if (err.response) {
@@ -96,6 +98,17 @@ function App() {
           <option value="أستاذ تعليم متوسط فيزياء">أستاذ تعليم متوسط فيزياء</option>
           <option value="أستاذ تعليم ثانوي علوم طبيعية">أستاذ تعليم ثانوي علوم طبيعية</option>
           <option value="أستاذ تعليم ثانوي إعلام آلي">أستاذ تعليم ثانوي إعلام آلي</option>
+        </select>
+          <select
+          name="level"
+          value={form.level}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        >
+          <option value="">-- اختر المستوى --</option>
+          <option value="سنة أولى">سنة أولى</option>
+          <option value="سنة ثانية">سنة ثانية</option>
         </select>
 
         <button type="submit" style={styles.button}>
